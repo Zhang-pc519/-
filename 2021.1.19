@@ -8,7 +8,7 @@ int main()
 	 {
 		 printf("请输入密码:>");
 		 scanf("%s",password);
-		 if(strcmp(password,"123456")==0)//==不能用来比较两个字符串是否相等
+		 if(strcmp(password,"123456")==0)
 		 {
 			 printf("登录成功\n");
 			 break;
@@ -47,9 +47,9 @@ int main()
 {
 	int arr[]={1,2,3,4,5,6,7,8,9,10};
 	int k=7;
-	int sz=sizeof(arr)/sizeof(arr[0]);//计算元素个数
-	int left=0;//左下标
-	int right=sz-1;//右下标
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	int left=0;
+	int right=sz-1;
 	while(left<=right)
 	{
 		int mid=(left+right)/2;
@@ -104,7 +104,7 @@ int main()
 		printf("%s\n",arr2);
 		//休息一秒
 		Sleep(1000);
-		system("cls");//执行系统命令的一个函数
+		system("cls");
 		left++;
 		right--;
 	}
