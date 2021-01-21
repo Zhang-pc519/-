@@ -1,0 +1,55 @@
+1.按公式y=2（m+n）/mn计算并输出y的值（保留两位小数），其中m和n的值由键盘输入。
+#include<stdio.h>
+int main()
+{
+	int m,n;
+	float y;
+	scanf_s("%d%d",&m,&n);
+	y=2.0*(m+n)/(m*n);
+	printf("%.2f\n",y);
+	return 0; 
+}
+2.从键盘输入半径和高，输出圆柱体的底面积和体积（保留三位小数）。
+#include<stdio.h>
+int main()
+{
+	float r,h,area,volume;
+	printf("Enter radius & height:");
+	scanf_s("%f%f",&r,&h);
+    area=3.14159*r*r;
+	volume=area*h;
+	printf("area=%.3f\n",area);
+	printf("volume=%.3f\n",volume);
+	return 0; 
+}
+3.从键盘输入两个两位的整数（如23和67），将这两个整数组合为一个4位整数7362并输出，
+组合规则：第一个数作为4位数的个位和百位，第二个数作为4位数的十位和千位，并要注意它们的顺序。
+#include<stdio.h>
+int main()
+{
+	int num1,num2,ge1,shi1,ge2,shi2;
+	scanf_s("%d%d",&num1,&num2);
+	ge1=num1%10;
+    shi1=num1/10;
+	ge2=num2%10;
+	shi2=num2/10;
+	printf("%d\n",ge2*1000+ge1*100+shi2*10+shi1);
+	return 0;
+}
+4.从键盘输入两个实数（一个是小数形式，如0.2567；一个是指数形式，如2.4e5），一个英文字母，
+一个英文字母的ASCII码（如字母a的ASCII码是97），并分4行输出对应形式的2个实数和2个英文字母。
+#include<stdio.h>
+int main()
+{
+	float a,b;
+	char c;
+	int d;
+	scanf("%f%e",&a,&b);
+	getchar();//此语句的作用是吸收一个回车符
+	scanf("%c",&c);
+	scanf("%d",&d);
+	printf("%f\n%e\n",a,b);
+	printf("%c\n",c);
+	printf("%c\n",d);
+	return 0;
+}
