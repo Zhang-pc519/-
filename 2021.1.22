@@ -1,55 +1,96 @@
-1.按公式y=2（m+n）/mn计算并输出y的值（保留两位小数），其中m和n的值由键盘输入。
+
+1.输入一个正整数，判断其是否为3和7的整数倍，若是则输出“yes”，否则输出“no”。
 #include<stdio.h>
 int main()
 {
-	int m,n;
-	float y;
-	scanf_s("%d%d",&m,&n);
-	y=2.0*(m+n)/(m*n);
-	printf("%.2f\n",y);
-	return 0; 
-}
-2.从键盘输入半径和高，输出圆柱体的底面积和体积（保留三位小数）。
-#include<stdio.h>
-int main()
-{
-	float r,h,area,volume;
-	printf("Enter radius & height:");
-	scanf_s("%f%f",&r,&h);
-    area=3.14159*r*r;
-	volume=area*h;
-	printf("area=%.3f\n",area);
-	printf("volume=%.3f\n",volume);
-	return 0; 
-}
-3.从键盘输入两个两位的整数（如23和67），将这两个整数组合为一个4位整数7362并输出，
-组合规则：第一个数作为4位数的个位和百位，第二个数作为4位数的十位和千位，并要注意它们的顺序。
-#include<stdio.h>
-int main()
-{
-	int num1,num2,ge1,shi1,ge2,shi2;
-	scanf_s("%d%d",&num1,&num2);
-	ge1=num1%10;
-    shi1=num1/10;
-	ge2=num2%10;
-	shi2=num2/10;
-	printf("%d\n",ge2*1000+ge1*100+shi2*10+shi1);
+	int x=21;
+	scanf("%d",&x);
+	if(x%3==0&&x%7==0)
+		printf("yes\n");
+	else
+		printf("no\n");
 	return 0;
 }
-4.从键盘输入两个实数（一个是小数形式，如0.2567；一个是指数形式，如2.4e5），一个英文字母，
-一个英文字母的ASCII码（如字母a的ASCII码是97），并分4行输出对应形式的2个实数和2个英文字母。
+2.输入x的值，用switch语句编写程序，计算y的值并输出。当x<0时，y=-1；当x=0时，y=0；当x>0时，y=1。
 #include<stdio.h>
 int main()
 {
-	float a,b;
-	char c;
-	int d;
-	scanf("%f%e",&a,&b);
-	getchar();//此语句的作用是吸收一个回车符
-	scanf("%c",&c);
-	scanf("%d",&d);
-	printf("%f\n%e\n",a,b);
-	printf("%c\n",c);
-	printf("%c\n",d);
+	float x;int y;
+	printf("input x:");
+	scanf("%f",&x);
+	switch(x<0)
+	{
+        case1:y=-1;
+		break;
+        case0:switch(x==0)
+	         {
+             case2:y=0;break;
+             default:y=1;
+	          }
+	}
+	printf("y=%d",y);
+	return 0;
+}
+3.邮局邮寄包裹有如下规定：如果包裹的长、宽、高任意尺寸超过一米或重量超过40千克，不予邮寄；
+可以邮寄的包裹每件收取手续费5元，再根据不同的重量weight计算邮资。weight<10kg,2.5元/kg;10kg<=weight<30kg,2.0元/kg;3kg<=weight<40kg,1.5元/kg。
+编写程序输入包裹的长、宽、高和重量，计算并输出邮资。
+#include<stdio.h>
+int main()
+{
+	float length,width,high,weight,money,r;
+	scanf("%f%f%f%f",&length,&width,&high,&weight);
+	if(length>1||width>1||high>1||weight>40)
+		printf("不予邮寄");
+	else if(weight<10)r=2.5;
+	else if(weight<30)r=2;
+	else r=1.5;
+	money=weight*r+5;
+	printf("%f\n",money);
+	return 0;
+}
+
+4.某超市进行啤酒促销活动，每瓶啤酒的价格为20元。当买5瓶以上（包括5瓶）10瓶以下时，啤酒的价格打9折；
+当买10瓶以上（包括10瓶）20瓶以下时，打85折；当买20瓶以上（包括20瓶）30瓶以下时，打8折；当买30瓶以上时，打75折。
+编写程序，根据顾客的购买数量计算所要付款的数额（保留两位小数）。
+#include<stdio.h>
+int main()
+{
+	float discount,price=20,total;
+	int x;
+	printf("请输入购买的瓶数:");
+	scanf("%d",&x);
+	switch(x/5)
+	{
+case0:discount=1;
+		break;
+case1:discount=0.9;
+		break;
+case2:
+case3:discount=0.85;
+		break;
+case4:
+case5:discount=0.8;
+		break;
+	default:discount=0.75;
+	}
+	total=price*x*discount;
+	printf("所付金额为%.2f\n",total);
+	return 0;
+}
+5.从键盘输入一个5位数，判断它是不是回文数。回文数是指个位和万位数相同、十位数和千位数相同的数，如12312是回文数。
+#include<stdio.h>
+int main()
+{
+	long int ge,shi,qian,wan,x;
+	printf("请输入一个五位数");
+	scanf("%ld",&x);
+	wan=x/10000;
+	qian =x%10000/1000;
+		shi=x%100/10;
+		ge=x%10;
+		if(ge==wan&&shi==qian)
+			printf("是回文数\n",x);
+		else
+			printf("不是回文数\n",x);
 	return 0;
 }
