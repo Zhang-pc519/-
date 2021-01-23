@@ -1,0 +1,89 @@
+//1.编写一个程序，依次输入5个学生的7门课程成绩，每输入一个学生的7门课程成绩后，
+//立即统计并输出该学生的总分和平均分。
+#include<stdio.h>
+int main()
+{
+	int i,j,score,sum;
+	float ave;
+	for(i=1;i<=5;i++)
+	{
+		sum=0;
+	printf("输入第%d个学生的7门课程成绩： ",i);
+	for(j=1;j<=7;j++)
+		{
+			scanf("%d",&score);
+	sum+=score;
+	}
+	ave=sum/7.0;
+	printf("\n第%d个学生的总分为： %的平均分为：%.2f\n\n",i,sum,ave);
+	}
+	return 0;
+}
+//2.设某县2000年工业产值为200亿元，如果该县预计平均每年工业总产值增长率为4.5%，
+//那么多少年后该县工业总产值将超过500亿元？
+#include<stdio.h>
+int main()
+{
+	int n=2000,t;
+	float a=200;
+	while(a<=500)
+	{
+		t=0.045*a;
+		a=a+t;
+		n++;
+	}
+	printf("a=%f,n=%d",a,n);
+	printf("%dyears over 500",n-2000);
+	return 0;
+}
+//3.编写一个程序，求出所有各位数字的立方和等于1099的三位数。
+#include<stdio.h>
+int main()
+{
+	int a,b,c;
+	for(a=1;a<=9;a++)
+		for(b=0;b<=0;b++)
+			for(c=0;c<=9;c++)
+				if(a*a*a+b*b*b+c*c*c==1099)
+					printf("%d\n",(10*a+b)*10+c);
+	return 0;
+}
+//4.有一个八层高的灯塔，每层灯数都等于上一层的两倍，一共有765盏灯，求塔底灯数。
+#include<stdio.h>
+int main()
+{
+	int x,s,i,k;
+	for(x=1;;x++)
+	{
+		s=0;
+	    k=x;
+		for(i=1;i<=8;i++)
+		{
+			s=s+k;
+			k=k*2;
+		}
+		if(s==765)
+			break;
+	}
+	printf("\n%d",k/2);
+	return 0;
+}
+//5.编写程序找出1000之内的所有完数（一个数如果恰好等于其因子之和，则这个数称为“完数”，
+//如6的因子是1、2、3，而6=1+2+3，因此6是一个完数）。
+#include<stdio.h>
+int main()
+{
+	int sum,i,j;
+	for(i=1;i<1000;i++)
+	{
+		sum=0;
+		for(j=1;j<i;j++)
+		{
+			if(i%j==0)
+				sum+=j;
+		}
+		if(sum==i)
+			printf("%4d",i);
+	}
+	return 0;
+}
