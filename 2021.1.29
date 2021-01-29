@@ -1,0 +1,71 @@
+1.编写一个函数，分别统计字符串中个元音字母（即A E I O U）出现的次数，
+//要求在主函数中输入一个字符串，并输出结果。
+//例如，输入“This is a student”，则输出“1 0 2 0 1”.
+#include<stdio.h>
+#define N 100
+void count(char str[N],int total[5])
+{
+	int i,ind;
+	for(i=0;i<5;i++)
+		total[i]=0;
+	for(i=0;str[i]!='\0';i++)
+	{
+	ind=-1;
+	switch(str[i])
+	{
+	case'a':case'A':ind=0;break;
+	case'e':case'E':ind=1;break;
+	case'i':case'I':ind=2;break;
+	case'o':case'O':ind=3;break;
+	case'u':case'U':ind=4;break;
+	}
+	if(ind>=0)
+		total[ind]++;
+	}
+}
+int main()
+{
+	char str[N];int total[5],i;
+	printf("\Enter a string:");
+	gets(str);
+	count(str,total);
+	for(i=0;i<5;i++)
+		printf("%d",total[i]);
+	return 0;
+}
+//2.编写一个递归函数送人头（int array[],int low,int high），
+//实现将数组下表从low到high-1范围内的元素按从小到大的顺序选择排序。
+#include<stdio.h>
+void sort(int array[],int low,int high);
+int main()
+{
+	int array[10]={1,3,5,7,9,2,4,6,8,0},i;
+	sort(array,0,10);
+	for(i=0;i<10;i++)
+		printf("%d ",array[i]);
+	printf("\n");
+	return 0;
+}
+void sort(int array[],int low,int high);
+{
+	int i,min,minInd;
+	if(low<high-1)
+	{
+		min=array[low];
+		minInd=low;
+		for(i=low+1;i<high;++i)
+		{
+			if(min>array[i])
+			{
+				min=array[i];
+			    minInd=i
+			}
+		}
+		if(minInd!=low)
+		{
+			array[minInd]=array[low];
+			array[low]=min
+		}
+		sort(array,low+1,high)
+	}
+}
