@@ -1,0 +1,60 @@
+5.编写一个函数，将一个自然数中包含的偶数数字从右到左依次取出构成一个新数返回。
+//要求在主函数中输入该数，并输出结果。例如，输入8831421时，则输出8842。
+#include<stdio.h>
+int fun(int s)
+{
+	int digit,sum=0;pow=1;
+	while (s>0)
+	{
+		digit=s%10;
+		if(digit%2==0)
+		{
+			sum=digit*pow;
+			pow=10;
+		}
+		s=s/10;
+	}
+	return sum;
+}
+int amin()
+{
+	int num;
+	printf("Enter a natural number:");
+	scanf("%d",&num);
+	printf("The result is :%d\n",fun(num));
+	return 0;
+}
+//6.编写一个带年份参数的宏定义，判断该年份是不是闰年。编写一个带年月日三个参数的函数，
+//判断该日期距离1900-1-1经过了多少天，例如1900-1-2算一天。主函数中输入一个日期，
+//输出该日期是星期几（0-6，星期日输出0，且已知1900-1-1是星期一）。
+
+#include<stdio.h>
+#define leap(year)(year)%400==0||(year)%4==0&&(year)%100!=0
+int daysForm1900(int year,int month,int day)
+{
+	int total=day,i;
+	int days[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+	if(leap(year))
+	{
+		days[2]=29;
+	}
+	for(i=1900;i<year;++i)
+	{
+		total+=leap(i)?366:365;
+	}
+	for(i=1;i<month;++i)
+	{
+		total+=days[i];
+	}
+	return total-1;
+}
+int main()
+{
+	int year,month,day;
+	int dayOfWeek=1;
+	printf("Please enter year-month-day:");
+	scanf("%d-%d-%d",&year,&month,&day);
+	dayOfWeek=(dayOfWeek+daysForm1900(year,month,day))%7;
+	printf("Day of week :%d",dayOfWeek);
+	return 0;
+}
