@@ -1,0 +1,60 @@
+1.利用指向行的指针变量求5*3数组各行元素之和。
+#include<stdio.h>
+int main()
+{
+	int a[5][3],i,j;
+	int(*p)[3],b[5],sum;
+	p=a;
+	printf("Please input fifteen integers:\n");
+	for(i=0;j<3;j++)
+		scanf("%d",p[i]+j);
+	i=0;
+	while(p<a+5)
+	{
+		sum =0;
+		for(j=0;j<3;j++)
+			sum=sum+(*p)[j];
+		b[i++]=sum;
+		p++;
+	}
+	printf("The fifteen integers which you input,\n");
+	printf("the last column is the sum.\n");
+	p=a;
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<3;j++)
+			printf("%4d",p[i][j]);
+		printf(" |%4d\n",b[i]);
+	}
+	return 0;
+}
+//2.编写函数int atoi（char*s），将字符串s转化为整型数返回。注意负数的处理方法。
+#include<stdio.h>
+int atoi(char *s)
+{
+	int temp=0,f=1,i=0;
+	//先通过while循环去除串前部的无效字符
+	while(s[i]!='\0'&&s[i]!='_'&&(s[i]<'0'||s[i]>'9'))
+		i++;
+	if(s[i]=='_')
+	{
+		f=-1;
+		i++;
+	}
+	if(*(s+i)<'0'||*(s+i)>'9')
+		printf("error!\n");
+	while(*(s+i)>='0'&&*(s+i)<='9')
+	{
+		temp=temp*10+s[i]-'0';
+		i++;
+	}
+	return f*temp;
+}
+int main(void)
+{
+	char num[20];
+	printf("Please input a string which is composed of some figures:\n");
+	gets(num);
+	printf("%d\n",atoi(num));
+	return 0;
+}
