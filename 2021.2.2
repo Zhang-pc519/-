@@ -1,0 +1,97 @@
+3.请使用指针和递归的方法编写一个实现字符串逆序的函数 char *reverse（char *）。
+//例如，如果输入“How do you do？”，则输出“？od uoy od woh”。
+#include<stdio.h>
+char *reverse(char *s)
+{
+	char tmp,*p;
+	if(*s!='\0')
+	{
+		reverse(s+1);
+		tmp=*s;
+		p=s+1;
+		while(*p!='0')
+		{
+			*(p-1)=*p;
+			p++;
+		}
+		*(p-1)=tmp;
+	}
+	return s;
+}
+int main()
+{
+	char num[20];
+	printf("Please input a string :\n");
+	gets(num);
+	printf("%s\n",reverse(num));
+	return 0;
+}
+//4.使用指针和递归的方法编写函数 char *itoa（int n，char *str），将整数n转换为十进制表示的字符串str。
+#include<stdio.h>
+#include<math.h>
+char *itoa(int n,char *str)
+{
+	int m;
+	if(n<0)
+	{
+		*str='_';
+		str++;
+	}
+	m=abs(n)/10;
+	if(m>0)
+		str=itoa(m,str);
+	*str=abs(n)%10+'0';
+	str++;
+	return str;
+}
+int main()
+{
+	int n;
+	char num[20]={0};
+	printf("Please input a number :\n");
+	scanf("%d",&n);
+	itoa(n,num);
+	printf("%s\n",num);
+	return 0;
+}
+5.定义一个函数delSubstr（），删除字符串中第k个字符开始的m个字母，例如删除字符串abcde第二个字符开始的3个字符，
+//则删除后结果为ae；又如删除字符串abcde第4个字符开始的5个字符，则删除后结果为abc。
+#include<stdio.h>
+#include<string.h>
+int deLSubstr(char *str,int k,int m);
+{
+	char *p,*q;
+	if(k<=0||m<=0)
+		return -1;
+	else if(k>strlen(str))
+		return -2;
+	else if(k+m>strlen(str))
+	{
+		str[k-1]='\0';
+		return 1;
+	}
+	else
+	{
+		p=str+k-1;
+		q=str+k+m-1;
+		while(*q!='\0')
+			*p++=*q++;
+		*p='\0';
+		return 1;
+	}
+}
+int main()
+{
+	char str[81];
+	int k,m,state;
+	printf("请输入字符串:\n");
+	gets(str);
+	printf("请输入要删除子串起始字符的序号和子串长度\n");
+	scanf("%d%d",&k,&m);
+	state=deLSubstr(str,k,m);
+	if(state<0)
+		printf("要删除子串起始字符的序号或子串长度的输入错误！\n");
+	else
+		printf("删除指定子串起始字符后的字符串为%s\n",str);
+	return 0;
+}
