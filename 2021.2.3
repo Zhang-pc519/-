@@ -1,0 +1,94 @@
+1.用学生的学号、姓名、年龄、成绩定义一个结构体类型student，其中年龄为出生日期，
+//其类型由另外一个结构体类型达特来定义，编写为该student类型变量赋值并输出的程序。
+#include<stdio.h>
+#include<string.h>
+struct date
+{
+	int year;
+	int month;
+	int day;
+};
+struct student
+{
+	char name[20];
+	char sex;
+	struct date birthday;
+	int score;
+};
+int main()
+{
+	struct student stu;
+	strcpy(stu.name,"Liu Lanfang");
+	stu.sex='f';
+	stu.birthday.year=1978;
+	stu.birthday.month=5;
+	stu.birthday.day=30;
+	stu.score=90;
+	printf("\nThe information is:\n");
+	printf("%s\n",stu.name);
+	printf("%c\n",stu.sex);
+	printf("%d/",stu.birthday.year);
+	printf("%d/",stu.birthday.month);
+	printf("%d\n",stu.birthday.day);
+	printf("%d\n",stu.score);
+	return 0;
+}
+//2.用商品编号、名称、单价、数量定义一个结构体类型，并定义该结构体类型数组用以存储库存商品。
+//编写一个函数为该数组赋值、一个函数输出库存清单，一个函数输出库存总值。
+#include<stdio.h>
+#include<string.h>
+#define N 5
+struct node
+{
+	long num;
+	char name[20];
+	float price;
+	long amount;
+};
+void input(struct node[]);
+void output(struct node[]);
+void outsum(struct node[]);
+int main()
+{
+	struct node commod[N];
+	input(commod);
+	output(commod);
+	outsum(commod);
+	return 0;
+}
+void input(struct node c[])
+{
+	int i;
+	long num ,amount;
+	char name [20];
+	float price;
+	printf("请输入：\n");
+	for(i=0;i<N;i++)
+	{
+		printf("商品编号"); scanf("%ld",&num); c[i].num=num;
+			printf("商品名称"); scanf("%s",name); strcpy(c[i].name,name);
+			printf("商品单价"); scanf("%f",&price); c[i].price=price;
+			printf("商品数量"); scanf("%ld",&amount); c[i].amount=amount;
+	}
+}
+	void output(struct node c[])
+	{
+		int i;
+	    printf("库存清单：\n");
+		printf(" 商品编号 商品名称 商品单价 商品数量\n");
+		for(i=0;i<N;i++)
+		{
+			printf("%10ld",c[i].num);
+			printf("%20s",c[i].name);
+			printf("15.2f",c[i].price);
+			printf("%10ld\n",c[i].amount);
+		}
+	}
+void outsum(struct node c[])
+{
+	int i;
+	float sum=0.0;
+	for(i=0;i<N;i++)
+		sum=sum+c[i].price*c[i].amount;
+	printf("库存总值：%10.2f\n",sum);
+}
