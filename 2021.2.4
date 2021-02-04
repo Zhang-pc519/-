@@ -1,0 +1,85 @@
+用学生的学号、姓名、年龄、成绩定义一个结构体类型数组，编写一个函数为该数组赋值、
+一个函数对数组按成绩排序、一个函数输出学生平均成绩。
+#include<stdio.h>
+#include<string.h>
+#define N 5
+struct student
+{
+	char name[16];
+	char sex;
+	int age;
+	int score;
+};
+void input(struct student stu[N]);
+void output(struct student stu[N]);
+void orderbysc(struct student stu[N],struct student stu_ord[N]);
+float average(struct student stu[N]);
+void stru_cpy(struct student *p,struct student *q);
+int main()
+{
+	struct student stu[N],stul[N];
+	input(stu);
+	output(stu);
+	orderbysc(stu,stul);
+	output(stul);
+	printf("\n The average is %f",average(stu));
+	return 0;
+}
+void input(struct student stu[N])
+{
+	int i,j;
+	printf("\nPlease input %d students information:",N);
+	for(i=0;i<N;i++)
+	{
+		printf("\n 请输入第%d个同学姓名 (不超过15个字符): ",i+1);
+		gets(stu[i].name);
+		printf("输入该同学性别（1个字符：m表示男/f表示女），年龄，成绩:");
+		scanf("%c%d%d",&stu[i].sex,&stu[i].age,&stu[i].score);
+		getchar();
+	}
+}
+void output(struct student stu[N])
+{
+	int i;
+	printf("\n the student is \n");
+	for(i=0;i<N,;i++)
+	{
+		printf("%20s  %c  %2d  %2d",stu[i].name,stu[i].sex,stu[i].age,stu[i].score);
+		printf("\n");
+	}
+}
+void orderbysc(struct student stu[N],struct student stu_ord[N])
+{
+	struct student temp;
+	int i,j,k;
+	for(i=0;i<N;i++)
+		stru_cpy(&stu_ord[i],&stu[i]);
+	for(i=0;i<N;i++)
+	{
+		k=i;
+		for(j=i;j<N;j++)
+			if(stu_ord[k].score>stu_ord[j].score)
+				k=j;
+		if(i!=k)
+		{
+			temp=stu_ord[i];
+			stu_ord[i]=stu_ord[k];
+			stu_ord[k]=temp;
+		}
+	}
+	float average(struct student stu[N])
+	{
+		float aver=0;
+		int i;
+		for(i=0;i<N;i++)
+			aver=aver+stu[i].score;
+		return aver/N;
+	}
+	void stru_cpy(struct student *p.struct student *q)
+	{
+		strcpy(p->name,q->name);
+		p->sex=q->sex;
+			p->age=q->age;
+			p->score=q->score;
+	}
+}
