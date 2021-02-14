@@ -1,0 +1,54 @@
+//1.求两个整数的和
+#include<stdio.h>
+int Sum(int x,int y)
+{
+	int z;
+	z=x+y;
+	return z;
+}
+int main()
+{
+	int a,b,s;
+	printf("请输入两个整数:");
+	scanf("%d%d",&a,&b);
+	s=Sum(a,b);
+	printf("两个整数和是:%d/n",s);
+	return 0;
+}
+
+//2.求矩形的周长
+#include<stdio.h>
+//以下是函数Perimeter的定义
+int Perimeter(int x,int y)
+{
+	int z;//定义函数Perimeter中用到的变量
+	z=2*x+2*y;//数据操作
+	return z;//返回操作结果
+}
+int main()
+{
+	int length,wide,pmt;//定义主函数中用到的变量
+	printf("请输入矩形的长和宽:");//输入提示
+	scanf("%d%d",&length,&wide);//调用输入函数
+	pmt=Perimeter(length,wide);//函数调用
+	printf("矩形的周长是:%d\n",pmt);//调用输出函数
+	return 0;
+}
+
+//3.求矩形的面积
+#include<stdio.h>
+int Area(int x,int y)
+{
+	int z;
+	z=x*y;
+	return z;
+}
+int main()
+{
+	int length,wide,mj;
+	printf("请输入矩形的长和宽:");
+	scanf("%d%d",&length,&wide);
+	mj=Area(length,wide);
+	printf("矩形的面积是: %d\n",mj);
+	return 0;
+}
