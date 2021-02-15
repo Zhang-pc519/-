@@ -1,0 +1,56 @@
+1.求圆的面积
+#include<stdio.h>
+#define PI 3.14159
+double Area(double r)
+{
+	double s;
+	s=PI*r*r;
+	return s;
+}
+int main()
+{
+	double Radii=3.0,s;
+	//printf("请输入圆的半径:");
+		//scanf("%lf",&Radii);
+		s=Area(Radii);
+		printf("半径为%lf的圆的面积为:%lf\n",Radii,s);
+	return 0;
+}
+
+2.求圆的周长
+#include<stdio.h>
+#define PI 3.14159
+double Perimeter(double l)
+{
+	double z;
+	z=PI*2l;
+	return z;
+}
+int main()
+{
+	double Radii=3.0,zc;
+	//printf("请输入圆的半径：");
+	//scanf("%lf",&Radii);
+	zc=Perimeter(Radii);
+	printf("半径为%lf的圆的周长为:%lf\n",Radii,zc);
+	return 0;
+}
+#include<stdio.h>
+char Encrypt(char c)
+{
+	static char i=1;
+	c=c+i;
+	i=i+1;
+	return c;
+}
+int main()
+{
+	char c1='C',c2='h',c3='i',c4='n',c5='a';
+	c1=Encrypt(c1);
+	c2=Encrypt(c2);
+	c3=Encrypt(c3);
+	c4=Encrypt(c4);
+	c5=Encrypt(c5);
+	printf("密语是：%c%c%c%c%c\n",c1,c2,c3,c4,c5);
+	return 0;
+}
