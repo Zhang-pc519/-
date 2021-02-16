@@ -1,0 +1,60 @@
+1.借助中间变量交换两个外部变量的值。
+#include<stdio.h>
+int main()
+{
+	int a=10,b=20;
+	int tmp=0;
+	printf("交换前：a=%d，b=%d\n",a,b);
+	tmp=a;
+	a=b;
+	b=tmp;
+	printf("交换后：a=%d, b=%d\n",a,b);
+	return 0;
+}
+2.不借助中间变量交换连个外部变量的值。
+方法1：
+int main()
+{
+	int a=10,b=20;
+	printf("交换前：a=%d，b=%d\n",a,b);
+	a=a+b;
+	b=a-b;
+	a=a-b;
+	printf("交换后：a=%d, b=%d\n",a,b);
+	return 0;
+}
+方法2：
+int main()
+{
+	int a=10,b=20;
+	printf("交换前：a=%d，b=%d\n",a,b);
+	a=a^b;
+	b=a^b;
+	a=a^b;
+	printf("交换后：a=%d, b=%d\n",a,b);
+	return 0;
+}
+4.编写程序，对输入的一个3位整数，输出各位数码。
+int Ones(int n)
+{
+	return n%10;
+}
+int Tens(int n)
+{
+	return n/10%10;
+}
+int Hundreds(int n)
+{
+	return n/10/10;
+}
+int main()
+{
+	int zpc=0,ones,tens,hundreds;
+	printf("请输入一个3位整数:");
+	scanf("%d",&zpc);
+	ones=Ones(zpc);
+	tens=Tens(zpc);
+	hundreds=Hundreds(zpc);
+	printf("3位整数%d的\n个位是%d,\n十位是%d,\n百位是%d,\n",zpc,ones,tens,hundreds);
+	return 0;
+}
