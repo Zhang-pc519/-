@@ -1,0 +1,76 @@
+1.编写一个程序按升序输出a和b。
+#include<stdio.h>
+int main()
+{
+	int a,b;
+	printf("输入a和b：");
+	scanf("%d%d",&a,&b);
+	printf("输出排序前的a和b：%d%d\n",a,b);
+	if(a>b)
+	{
+		int tmp=0;
+		tmp=a;
+		a=b;
+		b=tmp;
+	}
+	printf("输出排序后的a和b：%d%d\n",a,b);
+	return 0;
+}
+3.编写一个程序，判断输入字符类型。
+int main()
+{
+	char x;
+	printf("请输入一个字符：");
+	scanf("%c",&x);
+	if(x>='0'&&x<='9');
+
+		printf("字符类型为数字：%c\n",x);
+
+	else if(x>='a'&&x<='z'||x>='A'&&x<='Z');
+
+		printf("字符类型为字母：%c\n",x);
+
+	else if(x==' ');
+
+		printf("字符类型为空格 %c\n",x);
+
+	else
+
+		printf("字符类型为其他符号：%c\n",x);
+
+	return 0;
+}
+
+4.教材75页例题。
+#include<math.h>
+double disc,p,q;
+void root(double a,double b,double c)
+{
+	disc=b*b-4*a*c;
+	p=-b/2/a;
+	if(disc>0)
+		q=sqrt(disc)/2/a;
+	else
+		q=sqrt(-disc)/2/a;
+}
+int main()
+{
+	double a,b,c;
+	int x1,x2;
+	printf("分别输入a,b,c：");
+	scanf("%lf%lf%lf",&a,&b,&c);
+	root(a,b,c);
+	if(disc>0)
+	{
+		printf("输出两个不相等的实数根：x1=%.2lf,x2=%.2lf\n",p+q,p-q);
+	}
+	else if(disc<0)
+	{
+		printf("输出两个复数根：x1=%.2lf+%.2lf,x2=%.2lf-%.2lf\n",p,fabs(q),p,fabs(q));
+	}
+	else if(disc==0)
+	{
+        printf("输出两个相等的实数根：x1=x2=%.2lf\n",p);
+	}
+	return 0;
+}
