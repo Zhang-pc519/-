@@ -1,0 +1,73 @@
+3.求一个整数存储在内存中的二进制中1的个数。
+方法1：
+int main()
+{
+	int num=10;
+	int count =0;
+	while(num)
+	{
+		if(num%2==1)
+		count++;
+		num=num/2;
+	}
+	printf("二进制中1的个数 = %d\n", count);
+	return 0;
+}
+方法2：
+int main()
+{
+	int num= -1;
+	int i=0;
+	int count=0;
+	for(i=0;i<32;i++)
+	{
+		if(((num>>i)&1)==1)
+			count++;
+	}
+	printf("二进制中1的个数 = %d\n", count);
+	return 0;
+}
+方法3：
+int main()
+{
+	int num= -1;
+	int i=0;
+	int count=0;
+	while(num)
+	{
+		count++;
+		num=num&(num-1);
+	}
+	printf("二进制中1的个数 = %d\n", count);
+	return 0;
+}
+5.输入一个华氏温度f，将它转换成摄氏温度c输出。转换公式为：c=5*(f-32)/9。
+double ZH(double f)
+{
+	double c;
+	return c=5*(f-32)/9;
+}
+int main()
+{
+	double f,c;
+	printf("请输入一个华氏温度：");
+	scanf("%lf",&f);
+	c=ZH(f);
+	printf("转换成摄氏温度为%lf：",c);
+	return 0;
+}
+6.编写程序，输入一个字符，输出ASCII码比它大5的字符。
+char ZPC(char ch)
+{
+	char m;
+	return m=ch+5;
+}
+int main()
+{
+	char ch,m;
+	printf("请输入一个字符:");
+	scanf("%c",&ch);
+	m=ZPC(ch);
+	printf("输出字符为:%c\n",m);
+	return 0;
+}
