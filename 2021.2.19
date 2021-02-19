@@ -1,0 +1,62 @@
+7.鸡兔同笼。已知鸡兔总头数为h（设为30），总脚数为f（设为90），求鸡兔各几只。
+int num1(int h,int f)
+{
+	int x;
+	x=(4*h-f)/2;
+	return x;
+}
+int num2(int h,int cock)
+{
+	return h-cock;
+}
+int main()
+{
+	int h,f,cock,rabbit;
+	printf("请输入总共的头数和脚数：");
+	scanf("%d%d",&h,&f);
+	cock=num1(h,f);
+	rabbit=num2(h,cock);
+	printf("鸡和兔子分别有%d,%d只\n",cock,rabbit);
+	return 0;
+}
+8.输入一个4位的整数，表示开始时间，如1106表示11点06分；
+    同时再输入1个整数，表示将要流逝的分钟数，请计算从开始时间到流逝时间后是几点几分
+    （结果也表示4位数字。假设开始时间与流逝后的时间在同一天内）。
+int LS(int n,int mint)
+{
+	return n+mint;
+}
+int main()
+{
+	int n=0,mint,ls;
+	printf("请分别输入一个4位整数和一个整数：");
+	scanf("%d%d",&n,&mint);
+	ls=LS(n,mint);
+	printf("流逝后的时间是：%d\n",ls);
+	return 0;
+}
+教材57页例题
+int Ones(int n)
+{
+	return n%10;
+}
+int Tens(int n)
+{
+	return n/10%10;
+}
+int Hundreds(int n)
+{
+	return n/10/10;
+}
+int main()
+{
+	int n=0,sum,ones,tens,hundreds;
+	printf("请输入一个三位整数：");
+	scanf("%d",&n);
+	ones=Ones(n);
+	tens=Tens(n);
+	hundreds=Hundreds(n);
+	sum=ones+tens+hundreds;
+	printf("输出结果：%d\n",sum);
+	return 0;
+}
