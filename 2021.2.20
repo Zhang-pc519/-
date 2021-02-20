@@ -1,0 +1,92 @@
+5.输入一个字符，如果是大写字母，转换为小写，如果不是则不转换，最后输出。
+方法1：
+int main()
+{
+	char c,ch;
+	printf("输入一个字符：");
+	scanf("%c",&c);
+	ch=(c>='A'&&c<='Z');
+	if(ch)
+	{
+		c=c+32;
+		printf("输出字符：%c\n",c);
+	}
+	else
+		printf("输出字符：%c\n",c);
+	return 0;
+}
+方法2：
+char ZH(char c)
+{
+	char ch;
+	ch=(c>='A'&&c<='Z')?(c+32):c;
+	return ch;
+}
+int main()
+{
+	char c;
+	printf("请输入一个字符：");
+	c=getchar();
+	putchar(ZH(c));
+	printf("输出字符：%c\n",c);
+	return 0;
+}
+
+6.根据给定的年份计算该年度二月份的天数。
+int main()
+{
+	int year;
+	int Feb=28;
+	printf("请输入一个年份：");
+	scanf("%d",&year);
+	year=(year%4==0&&year%100!=0||year%400==0);
+	if(year)
+	{
+		Feb=Feb+1;
+		printf("该年度二月份的天数为：%d\n",Feb);
+	}
+	else
+		printf("该年度二月份的天数为：%d\n",Feb);
+
+	return 0;
+}
+
+7.输入4个数，按从小到大的顺序输出。
+void zpc(char a,char b,char c,char d)
+{
+	int tmp;
+	if(a>b)
+	{
+		tmp=a;a=b;b=tmp;
+	}
+	if(a>c)
+	{
+		tmp=a;a=c;c=tmp;
+	}
+	if(a>d)
+	{
+		tmp=a;a=d;d=tmp;
+	}
+	if(b>c)
+	{
+		tmp=b;b=c;c=tmp;
+	}
+	if(b>d)
+	{
+		tmp=b;b=d;d=tmp;
+	}
+	if(c>d)
+	{
+		tmp=c;c=d;d=tmp;
+	}
+	printf("四个数从小到大的顺序为：%c%c%c%c\n",a,b,c,d);
+}
+int main()
+{
+	char a,b,c,d;
+	printf("请输入四个数：");
+	scanf("%c%c%c%c",&a,&b,&c,&d);
+	zpc(a,b,c,d);
+	/*printf("四个数从小到大的顺序为：%c%c%c%c\n",a,b,c,d);*/
+	return 0;
+}
