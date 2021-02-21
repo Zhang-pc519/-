@@ -1,0 +1,76 @@
+8.某商场举行购物优惠活动（x代表购物款，y代表折扣）：
+当x<1600时，y=0;
+1600<=x<2400,y=5%;
+2400<=x<3200,y=10%;
+3200<=x<6400,y=15%;
+x>=6400,y=20%;
+输入一个顾客的购物款后，显示它应付的款数。
+int main()
+{
+	int x;
+	float discount,price;
+	printf("请输入购物款：");
+	scanf("%d",&x);
+	switch(x/1600)
+	{
+	case 0:discount=1;break; 
+	case 1:discount=0.95;break;
+	case 2:discount=0.9;break;
+	case 3:discount=0.85;break;
+	default :discount=0.8;break;
+	}
+	price=x*discount;
+	printf("应付金额为：%.2f\n",price);
+	return 0;
+}
+
+9.求三个整数的最大值。
+int MAX(int a,int b,int c)
+{
+	int max=a;
+	if(b>max)
+	{
+		max=b;
+	}
+	if(c>max)
+	{
+		max=c;
+	}
+	return max;
+}
+int main()
+{
+	int a,b,c,max;
+	printf("请输入三个整数：");
+	scanf("%d%d%d",&a,&b,&c);
+	max=MAX(a,b,c);
+	printf("三个整数的最大值为：%d\n",max);
+	return 0;
+}
+
+10.输入一个百分制成绩，要求输出成绩等级，成绩等级包括‘A’,'B','C','D'。
+其中90分以上为A，70-89分为B,60-69分为C，60分以下为D。
+char ScoreGrade(double score)
+{
+	char grade;
+	switch((int)score/10)
+	{
+	case 10:
+	case 9:grade='A';break;
+	case 8:
+	case 7:grade='B';break;
+	case 6:grade='C';break;
+	default:grade='D';
+	}
+	return grade;
+}
+int main()
+{
+	char grade;
+	double score;
+	printf("请输入成绩：");
+	scanf("%lf",score);
+	grade=ScoreGrade(score);
+	printf("成绩%.1lf的等级是：%c\n",score,grade);
+	return 0;
+}
