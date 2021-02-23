@@ -1,0 +1,61 @@
+1.计算100-1000中有多少个各位数字之和是5的数。
+#include<stdio.h>
+int main()
+{
+	int i,s,k,count=0;
+	for(i=100;i<=1000;i++)
+	{
+		s=0;k=i;
+			while(k!=0)
+			{
+				s=s+k%10;
+				k=k/10;
+			}
+			if(s!=5)
+				continue;
+			else
+				count++;
+	}
+	printf("%d",count);
+	return 0;
+}
+
+2.输出1-100中每位数的乘积大于每位数的和的数（如数字26，每位数的乘积12大于每位数的和8）。
+int main()
+{
+	int n,k=1,s=0,m;
+	for(n=1;n<=100;n++)
+	{
+		k=1;s=0;
+		m=n;
+		while(m)
+		{
+			k*=m%10;
+			s+=m%10;
+			m/=10;
+		}
+		if(k>s)
+			printf("%d\n",n);
+	}
+	return 0;
+}
+
+3(1).解决百马百担问题，有100匹马，驮100担货，大马驮3担，中马驮2担，两匹小马驮1担，问大马、中马、小马各多少匹？
+int main()
+{
+	int m,n,k;//m-大马，n-中马，k-小马
+	int sum=0;
+	printf("各种驮法如下： \n");
+	for(m=1;m<=100;m++)
+		for(n=1;n<=100-m;n++)
+		{
+			k=100-m-n;
+			if((2*3*m+2*2*m+k)==2*100)
+			{
+				printf("大马%3d匹；中马%3d匹；小马%3d匹.\n",m,n,k);
+				sum++;
+			}
+		}
+		printf("共有%d种驮法.\n",sum);
+	return 0;
+}
