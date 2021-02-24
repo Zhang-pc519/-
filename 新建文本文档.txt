@@ -1,0 +1,58 @@
+3(2).搬砖问题：36块砖，36人搬，男搬4，女搬3，两个小孩抬一砖，要求一次全搬完。问：男、女、小孩各若干？共有多少种方案？
+int main()
+{
+	int man,woman,child;
+	int sum=0;
+	printf("各种方案如下：\n");
+	for(man=1;man<=36;man++)
+	{
+		for(woman=1;woman<=36-man;woman++)
+		{
+			child=36-man-woman;
+		if(2*4*man+2*3*woman+child==2*36&&child%2==0)
+		{
+			printf("男%3d人；女%3d人；小孩%3d人.\n",man,woman,child);
+			sum++;
+		}
+	}
+	}
+	printf("共有%d种方案\n",sum);
+	return 0;
+}
+
+4.从键盘输入一组字符，将其中的小写字母变成对应大写字母后的第二个字母。其中，y变成A，z变成B。
+//int main()
+//{
+//	char c;
+//	while((c=getchar())!='\n');
+//	{
+//		if(c>='a'&&c<='z')
+//		{
+//			c-=30;
+//		if(c>'Z'&&c<='Z'+2)
+//			c-=26;
+//		}
+//		printf("%c",c);
+//	}
+//	return 0;
+//}
+5.输出如下图案。AAAAAAA
+                #BBBBBB
+                ##CCCCC
+                ###DDDD
+                ####EEE
+int main()
+{
+	int i,j;
+	char ch='A';
+	for(i=0;i<5;i++)
+	{
+		for(j=1;j<=i;j++)
+			printf("#");
+		for(j=1;j<=7-i;j++)
+			printf("%c",ch);
+		printf("\n");
+		ch++;
+	}
+	return 0;
+}
