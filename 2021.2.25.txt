@@ -1,0 +1,70 @@
+6.计算2/1+3/2+5/3+8/5+13/8+21/13+...分数序列的前30项之和。
+int main()
+{
+	int i,tmp,a=2,b=1;
+	float sn=0;
+	for(i=1;i<=30;i++)
+	{
+		sn=sn+(float)a/b;
+		tmp=a;
+		a=a+b;//求下一项分子的值
+		b=tmp;//求下一项分母的值
+	}
+	printf("sn=%d\n",sn);
+	return 0;
+}
+
+7.计算数列 1/2，2/3，3/5，5/8，8/13，...的前n项和，n由用户通过键盘输入。
+int main()
+{
+	double i=1,s=0,a=1,b=2;
+	int n;
+	scanf("%d",&n);
+	do
+	{
+			s=s+a/b;
+			b=a+b;
+			a=b-a;
+			i++;
+	}while(i<=n);
+	printf("前n项和为：%lf\n",s);
+	return 0;
+}
+
+8.教材95页例题。
+int Fibonacci(int n)
+{
+	int fib1=1,fib2=1,i;
+	for(i=3;i<=n;i++)
+	{
+		fib2=fib1+fib2;
+		fib1=fib2-fib1;
+	}
+	return fib2;
+}
+int main()
+{
+	int n,s;
+	printf("请输入项数：");
+	scanf("%d",&n);
+	s=Fibonacci(n);
+	printf("数列第%d项为：%d\n",n,s);
+	return 0;
+}
+方法2：用递归的方法计算
+int fib(int n)
+{
+	if(n==1||n==2)
+		return 1;
+	else
+		return fib(n-1)+fib(n-2);
+}
+int main()
+{
+	int n,s;
+	printf("请输入项数：");
+	scanf("%d",&n);
+	s=fib(n);
+	printf("数列第%d项为：%d\n",n,s);
+	return 0;
+}
