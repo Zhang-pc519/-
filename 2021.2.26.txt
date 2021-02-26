@@ -1,0 +1,134 @@
+10.输入任意个正数，计算它们的和，当输入数据小于0时，结束输入。
+int main()
+{
+	double sum=0,n;
+	printf("请输入正数：");
+	scanf("%lf",&n);
+	do
+	{
+		sum=sum+n;
+		scanf("%lf",&n);
+	}while(n>=0);
+	printf("这些数据的和为：%.3lf\n",sum);
+	return 0;
+}
+方法2：调用一个函数
+double zpc(double n)
+{
+	double sum=0;
+	do
+	{
+		sum=sum+n;
+		scanf("%lf",&n);
+	}while(n>=0);
+	return sum;
+}
+int main()
+{
+	double n;
+	printf("请输入正数：");
+	scanf("%lf",&n);
+	n=zpc(n);//定义了一个zpc的函数
+	printf("这些数的和为：%.3lf\n",n);
+	return 0;
+}
+
+11.输入一个正整数，按从高位到底位的次序输出各位上的数字。
+int fun_m(int n)//计算位权
+{
+	int m=1;
+	while(n>9)
+	{
+		m=m*10;
+		n=n/10;
+	}
+	return m;
+}
+int fun_out(int n,int m)
+{
+	int t;
+	do
+	{
+		t=n/m;//得到最高位
+		printf("%d",t);
+		n=n%m;//得到除最高位外的一个数
+		m=m/10;
+	}while(m>0);
+	return 0;
+}
+int main()
+{
+	int n,m;
+	printf("请输入一个正整数：");
+	scanf("%d",&n);
+	printf("从高位到底位的各个数字分别是：");
+	m=fun_m(n);
+	fun_out(n,m);
+	printf("\n");
+	return 0;
+}
+
+12.键盘输入一个正整数，逆序输出各位数字，并输出该整数的位数。
+int Reverse(int n)
+{
+	int m,sum=0;//m表示当前商n的个位ie，sum为计数器
+	printf("逆序输出整数%d的个位数字为：\n",n);
+	for(;n!=0;n=n/10)
+	{
+		m=n%10;//得到n的个位数字
+		sum++;
+		printf("%d\t",m);
+	}
+	return sum;
+}
+int main()
+{
+	int n,sum;
+	printf("请输入一个正整数：");
+	scanf("%d",&n);
+	sum=Reverse(n);
+	printf("\n整数%d是一个%d位数。\n",n,sum);
+	return 0;
+}
+
+水仙花数是一个3位数，他的各位数字的3次幂之和等于它本身。例如，153=1*1*1+5*5*5+3*3*3是一个水仙花数。
+编写程序求出所有的水仙花数，并统计局水仙花数的个数。
+int main()
+{
+	int i,sum=0,gw,sw,bw;//gw-个位...
+	for(i=100;i<1000;i++)
+	{
+		gw=i%10;sw=i/10%10;bw=i/10/10;
+		if(i==gw*gw*gw+sw*sw*sw+bw*bw*bw)
+		{
+			printf("%-5d",i);
+			sum++;
+		}
+	}
+	printf("\n三位数中共有水仙花数%d个。\n",sum);
+	return 0;
+}
+方法2：调用一个函数
+int isflower(int i)
+{
+	int gw,sw,bw;
+	gw=i%10;sw=i/10%10;bw=i/10/10;
+	if(i==gw*gw*gw+sw*sw*sw+bw*bw*bw)
+	{
+			printf("%-5d",i);
+			return 1;
+	}
+	else
+		return 0;
+}
+int main()
+{
+	int i,sum=0;
+	for(i=100;i<1000;i++)
+	{
+		if(isflower(i))
+			sum++;
+	}
+	printf("\n三位数中共有水仙花数%d个。\n",sum);
+	return 0;
+}
