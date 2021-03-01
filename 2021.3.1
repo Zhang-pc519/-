@@ -1,0 +1,110 @@
+5.输入正整数n，计算n位的所有阿姆斯特朗数。阿姆斯特朗数是指一个n位数，其每个数位上数字的n次幂之和等于他本身。
+如：153=1^3+5^3+3^3=1+125+27;8208=8^4+2^4+0^4+8^4=4096+16+4096.
+int limit(int n)
+{
+	int i,first;
+	i=1;
+	first=1;
+	while(i<n)
+	{
+		//得到范围的下限，first==下限，三位100四位1000...
+		first=first*10;
+		i++;
+	}
+	return first;
+}
+void Armstrong(int st,int n)
+{
+	int sum,pro,t,d,i,j;
+	for(i=st;i<st*10;i++)//st下限，上限st*10
+	{
+		t=i;
+		sum=0;
+		do
+		{
+			d=t%10;//分解得到最低位d
+			t/=10;
+			j=0;pro=1;
+			while(j<n)//计算一位的n次幂
+			{
+				pro=pro*d;
+				j++;
+			}
+			sum=sum+pro;//累计
+		}while(t>0);
+			if(i==sum)
+				printf("%d\n",i);
+	}
+}
+int main()
+{
+	int n,lt;
+	printf("请输入正整数n：");
+	scanf("%d",&n);
+	lt=limit(n);
+	printf("所有%d位的阿姆斯特朗数有：\n",n);
+	Armstrong(lt,n);
+	return 0;
+}
+
+6.用递归法求两个数的最大公约数。
+int fun(int m,int n)
+{
+	int t;
+	t=m%n;
+	if(t==0)
+		return 0;
+	else
+		return (fun(n,t));
+}
+int main()
+{
+	int m,n;
+	printf("请输入两个正整数：");
+	scanf("%d%d",&m,&n);
+	printf("%d和%d的最大公约数位%d\n",m,n,fun(m,n));
+	return 0;
+}
+
+7.输出指定范围内的所有素数，并统计输出此范围内素数的个数，要求指定范围由用户输入，每行输出5个素数。
+#include<math.h>
+int Prime(int n)
+{
+	int i,flag=1;
+	if(n==1)
+		flag=0;
+	for(i=2;i<=sqrt(n);i++)
+	{
+		if(n%i==0)
+		{
+			flag=0;
+			break;
+		}
+	}
+	return flag;
+}
+int Count(int a,int b)
+{
+	int n,count=0;
+	printf("%d-%d之间的素数有：",a,b);
+	for(n=a;n<=b;n++)
+	{
+		if(Prime(n))
+		{
+			if(count%5==0)
+				printf("\n");
+			printf("%6d\t",n);
+			count++;
+		}
+	}
+	return count;
+}
+int main()
+{
+	int a,b,count;
+	printf("请输入指定范围[a,b](用空格分隔)：");
+	scanf("%d%d",&a,&b);
+	count=Count(a,b);
+	printf("\n%d-%d之间共有%d个素数。\n",a,b,count);
+	return 0;
+}
