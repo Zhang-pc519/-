@@ -1,0 +1,100 @@
+9.由键盘任意输入N个国家的英文名称，按英语词典规律（升序）排序后输出。
+#include<string.h>
+void sort(char str[][80])
+{
+	char t[80];
+	int i,j;
+	for(i=0;i<N-1;i++)
+	{
+		for(j=0;j<N-1-i;j++)
+		{
+			if(strcmp(str[j],str[j+1])>0)
+			{
+				strcpy(t,str[j]);
+					strcpy(str[j],str[j+1]);
+					strcpy(str[j+1],t);
+			}
+		}
+	}
+}
+void showstr(char str[][80])
+{
+	int i;
+	for(i=0;i<N;i++)
+	{
+		puts(str[i]);
+	}
+}
+int main()
+{
+	char str[N][80];
+	int i;
+	printf("请输入%d个国家的英文名称：\n",N);
+	for(i=0;i<N;i++)
+	{
+		gets(str[i]);
+	}
+	sort(str);
+	printf("排序后国家的英文名称：\n",N);
+	showstr(str);
+	return 0;
+}
+
+10.教材156页4
+void f(char p[][10],int n)
+{
+	char t[20];
+	int i,j;
+	for(i=0;i<n-1;i++)
+		for(j=0;j<n-1-i;j++)
+			if(strcmp(p[j],p[j+1])>0)
+			{
+				strcpy(t,p[j]);
+					strcpy(p[j],p[j+1]);
+					strcpy(p[j+1],t);
+			}
+}
+int main()
+{
+	char p[][10]={"abc","aabdf","abbd","dcdbe","cd"};
+	f(p,5);
+	printf("%d\n",strlen(p[0]));
+	return 0;
+}
+
+11.读入一个自然数n，计算其各位数字之和，用汉语拼音写出和的每一位数字。
+int fun(int n)
+{
+	char a[][5]={"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
+	int t,mask=1;
+	t=n;
+	while(t>=10)
+	{
+		t=t/10;
+		mask=mask*10;//得到位权
+	}
+	while(mask>0)
+	{
+		t=n/mask;//得到最高位的值
+		printf("%s",a[t]);
+		n=n%mask;//得到除最高位的值
+		mask=mask/10;
+	}
+	printf("\n");
+	return 0;
+}
+int main()
+{
+	char s[100]={'\0'},i;
+	int n=0;
+	printf("输入一个自然数：");
+	gets(s);
+	i=0;
+	while(s[i])
+	{
+		n=n+s[i]-'0';
+		i++;
+	}
+	fun(n);
+	return 0;
+}
