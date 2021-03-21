@@ -1,0 +1,54 @@
+2.分别统计字符串中大写字母、小写字母、空格及数字字符的个数。要求：在主函数中完成字符串的输入及输出统计结果，
+在函数void count（char a[],int *upper,int *lower,int *space ,int *digit）中实现统计.
+void count(char a[],int *upper,int *lower,int *space ,int *digit)
+{
+	int i;
+	for(i=0;a[i]!='\0';i++)
+	{
+		if('A'<=a[i]&&a[i]<='Z')
+			(*upper)++;
+		else if('a'<=a[i]&&a[i]<='z')
+			(*lower)++;
+		else if('0'<=a[i]&&a[i]<='9')
+			(*space)++;
+		else if(a[i]==' ')
+			(*digit)++;
+	}
+}
+int main()
+{
+	char a[81];
+	int upper=0,lower=0,space=0,digit=0;
+	printf("请输入一个字符串：");
+	gets(a);
+	count(a,&upper,&lower,&space,&digit);
+	printf("大写字母、小写字母、空格和数字的个数分别为：%d%d%d%d\n",upper,lower,space,digit);
+	return 0;
+}
+
+3.求输入任意N个整数中的整数之和及个数。要求：编写一个函数完成计算和统计，在主函数中完成所有的输入输出。
+#define N 10
+void count(int a[],int *plus,int *sum)
+{
+	int i;
+	for(i=0;i<N;i++)
+	{
+		if(a[i]>0)
+		{
+			(*plus)++;
+			(*sum)+=a[i];
+		}
+	}
+}
+int main()
+{
+	int i,a[N],plus=0,sum=0;
+	printf("请输入%d个整数：",N);
+	for(i=0;i<N;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	count(a,&plus,&sum);
+	printf("正数有%d个，正数之和为：%d\n",plus,sum);
+	return 0;
+}
