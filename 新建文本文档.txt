@@ -1,0 +1,118 @@
+1.输出所有指定范围内的素数，并统计输出此范围内素数的个数，
+要求指定范围由用户输入，每行输出5个素数
+#include<stdio.h>
+#include<math.h>
+int Prime(int n)
+{
+	int i,flag=1;
+	if(n==1)
+		flag=0;
+	for(i=2;i<=sqrt(n);i++)
+	{
+		if(n%i==0)
+		{
+			flag=0;
+			break;
+		}
+	}
+	return flag;
+}
+int Count(int a,int b)
+{
+	int n,count =0;
+	printf("%d-%d之间的素数有：",a,b);
+	for(n=a;n<=b;n++)
+	{
+		if(Prime(n))
+		{
+			if(count%5==0)
+				printf("\n");
+			printf("%6d\t",n);
+			count++;
+		}
+	}
+	return count ;
+}
+int main()
+{
+	int a,b,count;
+	printf("请输入指定范围[a,b](用空格分隔):");
+	scanf("%d%d",&a,&b);
+	count=Count(a,b);
+	printf("\n%d-%d之间共有%d个素数。\n",a,b,count);
+	return 0;
+}
+
+2.制作一个简易菜单，要求：程序只有一个入口和一个出口
+#include<conio.h>
+#include<stdlib.h>
+void Function1(void)
+{
+	printf("功能1：\n");
+}
+void Function2(void)
+{
+	printf("功能2：\n");
+}
+int Select(char ch)
+{
+	//菜单选择
+	switch(ch)
+	{
+	case'1':Function1();break;
+	case'2':Function2();break;
+	case'0':return 1;
+	default:printf("选择错误！！！\n");
+	}
+}
+void ShowMenu()
+{
+	//显示菜单
+	printf("\t*************************\n");
+	printf("\t*\t功能菜单\t*\n");
+	printf("\t*\t1.功能一\t*\n");
+	printf("\t*\t2.功能二\t*\n");
+	printf("\t*\t0.退出\t\t*\n");
+	printf("\t*************************\n");
+}
+int main()
+{
+	char ch;
+	while(1)
+	{
+		system("cls");
+		ShowMenu();
+		printf("请选择（1，2，0）：");
+		ch=getchar();
+		getchar();
+		if(Select(ch))
+		{
+			printf("感谢使用，再见！\n");
+			break;
+		}
+	}
+	return 0;
+}
+
+3.汉诺塔问题
+void Hanoi(int n,char A,char B,char C)
+{
+	if(n==1)
+	{
+		printf("将%d号盘子从%c柱移动到%c柱\n",n,A,B);
+	}
+	else
+	{
+		Hanoi(n-1,A,B,C);
+		printf("将%d号盘子从%c柱移动到%c柱\n",n,A,B);
+		Hanoi(n-1,C,B,A);
+	}
+}
+int main()
+{
+	int n;
+	printf("请输入汉诺塔盘子个数：\n");
+	scanf("%d",&n);
+	Hanoi(n,'A','B','C');
+	return 0;
+}
